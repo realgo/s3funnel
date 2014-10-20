@@ -176,7 +176,7 @@ def main():
               'ignore_s3fs_dirs': options.ignore_s3fs_dirs
               }
 
-    funnel = S3Funnel(**config)
+    funnel = S3Funnel(config)
 
     # Setup operation mapping
     methods_keys = {

@@ -88,7 +88,7 @@ class S3Funnel(object):
     maxjobs [Default: numthreads * 2]
         Number of jobs to accept into the queue at a time (block if full)
     """
-    def __init__(self, aws_key=None, aws_secret_key=None, pool=None, **config):
+    def __init__(self, aws_key=None, aws_secret_key=None, pool=None, config):
         self.aws_key = aws_key or config.get('aws_key')
         self.aws_secret_key = aws_secret_key or config.get('aws_secret_key')
 
