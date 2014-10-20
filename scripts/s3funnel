@@ -145,11 +145,11 @@ def main():
 
     if options.add_prefix and options.del_prefix:
         parser.error("--add-prefix and --del-prefix options are mutually exclusive")
-        return -1
+        return 1
 
     if operation == 'copy' and not options.source_bucket:
         parser.error("Source bucket not specified")
-        return -1
+        return 1
 
     # Setup logging
     if options.verbose > 1:
@@ -212,7 +212,7 @@ def main():
             data = open(glob(options.input)[0])
         except (IOError, IndexError), e:
             log.error("%s: File not found" % options.input)
-            return -1
+            return 1
         input_src = "`%s'" % options.input
     elif len(args) < 3:
         # Get source from stdin
@@ -265,13 +265,13 @@ def main():
             if r:
                 log.critical("%d keys failed." % len(r))
                 funnel.shutdown()
-                return len(r)
+                return 2
     except TypeError, e:
         pass
     except FunnelError, e:
         log.critical(e)
         funnel.shutdown()
-        return -1
+        return 1
 
     funnel.shutdown()
 
