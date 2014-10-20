@@ -142,11 +142,11 @@ def main():
 
     if operation == 'list' and not bucket:
         operation = 'show'
-        
+
     if options.add_prefix and options.del_prefix:
         parser.error("--add-prefix and --del-prefix options are mutually exclusive")
         return -1
-    
+
     if operation == 'copy' and not options.source_bucket:
         parser.error("Source bucket not specified")
         return -1
@@ -166,7 +166,7 @@ def main():
               'aws_secret_key': aws_secret_key,
               'secure': options.secure,
               'bucket': bucket,
-              'source_bucket': options.source_bucket, 
+              'source_bucket': options.source_bucket,
               'put_full_path': options.put_full_path,
               'put_only_new': options.put_only_new,
               'add_prefix': options.add_prefix,
@@ -272,7 +272,7 @@ def main():
         log.critical(e)
         funnel.shutdown()
         return -1
-    
+
     funnel.shutdown()
 
 if __name__ == "__main__":
